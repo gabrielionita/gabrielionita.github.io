@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 using System;
 using System.Net.Http;
 
-namespace BlazorApp.Pages
+namespace BlazorApp.Components
 {
 	public partial class Contact : ComponentBase
 	{
