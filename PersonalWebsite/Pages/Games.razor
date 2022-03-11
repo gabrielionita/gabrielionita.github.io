@@ -1,0 +1,6 @@
+﻿@page "/games"
+<h3>Games</h3>
+
+@foreach(var game in GameList){
+    <a href="games/@(game)">@game</a>
+}
