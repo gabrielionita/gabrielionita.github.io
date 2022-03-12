@@ -7,21 +7,21 @@
     var warningBanner = document.querySelector("#unity-warning");
 
     // Shows a temporary message banner/ribbon for a few seconds, or
-    // a permanent error message on top of the canvas if type=='error'.
-    // If type=='warning', a yellow highlight color is used.
+    // a permanent error message on top of the canvas if type=="error".
+    // If type=="warning", a yellow highlight color is used.
     // Modify or remove this function to customize the visually presented
     // way that non-critical warnings and error messages are presented to the
     // user.
     function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
-            warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+            warningBanner.style.display = warningBanner.children.length ? "block" : "none";
         }
-        var div = document.createElement('div');
+        var div = document.createElement("div");
         div.innerHTML = msg;
         warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        if (type == "error") div.style = "background: red; padding: 10px;";
         else {
-            if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+            if (type == "warning") div.style = "background: yellow; padding: 10px;";
             setTimeout(function () {
                 warningBanner.removeChild(div);
                 updateBannerVisibility();
@@ -37,8 +37,8 @@
         frameworkUrl: buildUrl + "/Build.framework.js",
         codeUrl: buildUrl + "/Build.wasm",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Pong",
+        companyName: "Gabriel Ionita",
+        productName: name,
         productVersion: "1.0",
         showBanner: unityShowBanner,
     };
@@ -55,15 +55,14 @@
         // Avoid draining fillrate performance on mobile devices,
         // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1;
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
+        unityShowBanner("WebGL builds are not supported on mobile devices.");
     } else {
-        //canvas.style.width = "960px";
-        //canvas.style.height = "600px";
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
     }
     loadingBar.style.display = "block";
 
     var script = document.createElement("script");
-    script.textContent
     script.src = loaderUrl;
     script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
@@ -78,4 +77,12 @@
         });
     };
     document.body.appendChild(script);
+}
+
+export function clearScripts(name) {
+    var scripts = document.querySelectorAll("script[src^=\"" + unity + "\\" + name + "\"]")
+    for(var script of scripts) {
+        console.log(script);
+        script.remove();
+    }
 }

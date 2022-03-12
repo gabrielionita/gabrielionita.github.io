@@ -1,5 +1,9 @@
 ﻿@page "/games/{name}"
-<h3>Games</h3>
+
+<PageTitle>@Name</PageTitle>
+
+<h3>@Name - Game</h3>
+
 <a href="games">Back</a>
 <div id="unity-container" class="unity-desktop">
     <canvas id="unity-canvas" width=960 height=600></canvas>
@@ -13,6 +17,6 @@
     <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Pong</div>
+        <div id="unity-build-title">@Name</div>
     </div>
 </div>
