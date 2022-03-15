@@ -80,9 +80,8 @@
 }
 
 export function clearScripts(name) {
-    var scripts = document.querySelectorAll("script[src^=\"" + unity + "\\" + name + "\"]")
+    var scripts = document.querySelectorAll("script[src^=\"unity/" + name + "\"]")
     for(var script of scripts) {
-        console.log(script);
         script.remove();
     }
 }
