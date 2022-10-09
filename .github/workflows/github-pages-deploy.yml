@@ -22,7 +22,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Release
     - name: Publish
-      run: dotnet publish --no-restore --no-build --configuration Release --output ${{env.DOTNET_ROOT}}/publish 
+      run: dotnet publish --no-restore --no-build --configuration Release --output ${{env.DOTNET_ROOT}}/publish -p:BlazorEnableCompression=false 
     - name: Upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v1.0.4
       with:
