@@ -16,7 +16,8 @@ namespace PersonalWebsite
             builder.RootComponents.Add<App>("#app");
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
-            builder.Services.AddScoped(sp => {
+            builder.Services.AddScoped(sp => 
+            {
                 var client = new HttpClient
                 {
                     BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
